@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Женщины в управлении и науке | БГЭУ исследование</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f8f5fc;
+            color: #2d2a3e;
+            line-height: 1.45;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 28px;
+        }
+
+        header {
+            background: #ffffff;
+            color: #4a3b6e;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.02), 0 1px 2px rgba(0,0,0,0.05);
+            border-bottom: 1px solid #e4daf2;
+        }
+
+        .header-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 18px;
+        }
+
+        .logo h1 {
+            font-size: 1.7rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #6b4e9e, #9b7bcb);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .logo p {
+            font-size: 0.8rem;
+            opacity: 0.7;
+            color: #6a5a8a;
+        }
+
+        .hero-buttons {
+            background: linear-gradient(105deg, #f3effa 0%, #ede7f8 100%);
+            color: #2d2a3e;
+            padding: 80px 0 90px;
+            text-align: center;
+            border-bottom: 1px solid #e0d6ee;
+        }
+
+        .hero-buttons h2 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: #4a3b6e;
+        }
+
+        .hero-buttons p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            opacity: 0.8;
+            color: #5e5280;
+        }
+
+        .main-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 28px;
+        }
+
+        .main-btn {
+            background: #ffffff;
+            border: 1px solid #cdbfe6;
+            padding: 16px 40px;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: #6b4e9e;
+            text-decoration: none;
+            transition: all 0.25s ease;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+        }
+
+        .main-btn:hover {
+            background: #6b4e9e;
+            color: white;
+            border-color: #6b4e9e;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 22px rgba(0,0,0,0.08);
+        }
+
+        .tab-section {
+            display: none;
+            padding: 60px 0;
+            border-bottom: 1px solid #e4daf2;
+            animation: fade 0.3s ease;
+        }
+        .tab-section.active-tab {
+            display: block;
+        }
+        @keyframes fade {
+            from { opacity: 0; transform: translateY(10px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 36px;
+            border-left: 7px solid #9b7bcb;
+            padding-left: 24px;
+            color: #4a3b6e;
+        }
+
+        .stats-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 26px;
+            justify-content: center;
+            margin-bottom: 48px;
+        }
+        .stat-card {
+            background: #ffffff;
+            border-radius: 32px;
+            padding: 28px 20px;
+            text-align: center;
+            box-shadow: 0 12px 24px rgba(0,0,0,0.02);
+            flex: 1 1 170px;
+            border-bottom: 5px solid #9b7bcb;
+            transition: 0.2s;
+        }
+        .stat-number {
+            font-size: 2.7rem;
+            font-weight: 800;
+            color: #6b4e9e;
+        }
+        .stat-label {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #5e5280;
+            margin-top: 8px;
+        }
+
+        .chart-container {
+            background: #ffffff;
+            border-radius: 36px;
+            padding: 28px;
+            margin: 32px 0;
+            border: 1px solid #e4daf2;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+        }
+        .bar-chart {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .bar-item {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+        .bar-label {
+            width: 260px;
+            font-weight: 600;
+            color: #4a3b6e;
+        }
+        .bar-bg {
+            flex: 1;
+            background: #ede7f8;
+            border-radius: 40px;
+            overflow: hidden;
+            height: 40px;
+        }
+        .bar-fill {
+            background: #9b7bcb;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 16px;
+            color: white;
+            font-weight: bold;
+            border-radius: 40px;
+        }
+        .pie-container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 40px;
+            justify-content: center;
+            margin: 30px 0;
+        }
+        .pie {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        .pie-legend {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .legend-color {
+            width: 24px;
+            height: 24px;
+            border-radius: 8px;
+        }
+
+        .line-chart-svg {
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+        svg {
+            display: block;
+            margin: 0 auto;
+            background: #fefcff;
+            border-radius: 24px;
+            padding: 20px;
+        }
+        .tooltip-note {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #7a6a9c;
+            margin-top: 16px;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+            border: 1px solid #e4daf2;
+            margin-bottom: 32px;
+        }
+        .data-table th {
+            background: #f3effa;
+            color: #4a3b6e;
+            padding: 16px;
+            font-weight: 700;
+            text-align: left;
+        }
+        .data-table td {
+            padding: 14px 16px;
+            border-bottom: 1px solid #ede7f8;
+            color: #5e5280;
+        }
+        .data-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .research-item {
+            background: #fefcff;
+            padding: 28px;
+            border-radius: 28px;
+            margin: 30px 0;
+            border: 1px solid #e4daf2;
+        }
+        .research-item h3 {
+            color: #6b4e9e;
+            margin-bottom: 12px;
+            font-size: 1.3rem;
+        }
+        .research-item p {
+            color: #5e5280;
+            line-height: 1.5;
+            margin-bottom: 8px;
+        }
+        .research-item .source {
+            font-size: 0.8rem;
+            color: #8a7aaa;
+            margin-top: 12px;
+            font-style: italic;
+        }
+        footer {
+            background: #f3effa;
+            color: #6a5a8a;
+            padding: 44px 0;
+            text-align: center;
+            border-top: 1px solid #e4daf2;
+        }
+        .source-note {
+            font-size: 0.75rem;
+            color: #8a7aaa;
+            margin-top: 20px;
+            text-align: right;
+        }
+        .info-block {
+            background: #f3effa;
+            border-radius: 28px;
+            padding: 20px 28px;
+            margin-top: 24px;
+            border-left: 6px solid #b8a2e0;
+            color: #5e5280;
+        }
+        .subheading {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #4a3b6e;
+            margin: 32px 0 20px 0;
+            padding-left: 16px;
+            border-left: 4px solid #9b7bcb;
+        }
+        .stats-highlight {
+            background: #f3effa;
+            border-radius: 28px;
+            padding: 20px 28px;
+            margin: 20px 0;
+            border-left: 6px solid #9b7bcb;
+        }
+        .stats-highlight p {
+            margin: 8px 0;
+        }
+        @media (max-width: 780px) {
+            .section-title { font-size: 1.7rem; }
+            .bar-label { width: 100%; }
+            .hero-buttons h2 { font-size: 2rem; }
+            .main-btn { padding: 12px 28px; font-size: 1rem; }
+            .data-table { font-size: 0.85rem; }
+            .data-table td, .data-table th { padding: 10px 12px; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container header-flex">
+        <div class="logo">
+            <h1>WOMEN IN GOVERNMENT & SCIENCE</h1>
+            <p>Белорусский государственный экономический университет | Гендерный мониторинг</p>
+        </div>
+    </div>
+</header>
+
+<section class="hero-buttons">
+    <div class="container">
+        <h2>Женщины в управлении и науке:<br> Беларусь, Правительство, БГЭУ</h2>
+        <p>Исследование представленности женщин в органах власти, руководстве БГЭУ и академической среде</p>
+        <div class="main-buttons">
+            <button class="main-btn" data-tab="stats">📊 Статистика</button>
+            <button class="main-btn" data-tab="government">🏛 Правительство</button>
+            <button class="main-btn" data-tab="bseu">🎓 БГЭУ</button>
+            <button class="main-btn" data-tab="science">🔬 Наука</button>
+        </div>
+    </div>
+</section>
+
+<main>
+    <!-- СТАТИСТИКА -->
+    <div id="stats" class="tab-section active-tab">
+        <div class="container">
+            <h2 class="section-title">Ключевая статистика и графики</h2>
+            <div class="stats-grid">
+                <div class="stat-card"><div class="stat-number">57%</div><div class="stat-label">государственные служащие высшего звена</div></div>
+                <div class="stat-card"><div class="stat-number">50%</div><div class="stat-label">руководители организаций</div></div>
+                <div class="stat-card"><div class="stat-number">33%</div><div class="stat-label">депутаты Парламента</div></div>
+                <div class="stat-card"><div class="stat-number">70.4%</div><div class="stat-label">руководители местных исполкомов</div></div>
+                <div class="stat-card"><div class="stat-number">54%</div><div class="stat-label">населения РБ (женщины)</div></div>
+            </div>
+
+            <div class="chart-container">
+                <h3 style="margin-bottom: 28px; color: #4a3b6e;">Доля женщин на руководящих позициях</h3>
+                <div class="bar-chart">
+                    <div class="bar-item"><div class="bar-label">Госслужащие высшего звена</div><div class="bar-bg"><div class="bar-fill" style="width: 57%;">57%</div></div></div>
+                    <div class="bar-item"><div class="bar-label">Руководители организаций</div><div class="bar-bg"><div class="bar-fill" style="width: 50%;">50%</div></div></div>
+                    <div class="bar-item"><div class="bar-label">Депутаты Парламента</div><div class="bar-bg"><div class="bar-fill" style="width: 33%;">33%</div></div></div>
+                    <div class="bar-item"><div class="bar-label">Руководители местных исполкомов</div><div class="bar-bg"><div class="bar-fill" style="width: 70%;">70.4%</div></div></div>
+                    <div class="bar-item"><div class="bar-label">Судьи</div><div class="bar-bg"><div class="bar-fill" style="width: 66%;">66%</div></div></div>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <h3 style="color: #4a3b6e;">Соотношение в высшем звене госслужбы (2026)</h3>
+                <div class="pie-container">
+                    <div class="pie" style="background: conic-gradient(#9b7bcb 0% 57%, #d9cdf2 57% 100%);"></div>
+                    <div class="pie-legend">
+                        <div class="legend-item"><div class="legend-color" style="background:#9b7bcb;"></div><span>Женщины — 57%</span></div>
+                        <div class="legend-item"><div class="legend-color" style="background:#d9cdf2;"></div><span>Мужчины — 43%</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <h3 style="color: #4a3b6e;">Тренд доли женщин на руководящих должностях в Беларуси (2015–2026)</h3>
+                <div class="line-chart-svg">
+                    <svg width="700" height="350" viewBox="0 0 700 350" xmlns="http://www.w3.org/2000/svg">
+                        <line x1="80" y1="300" x2="650" y2="300" stroke="#d9cdf2" stroke-width="1" />
+                        <line x1="80" y1="240" x2="650" y2="240" stroke="#e6def5" stroke-width="1" stroke-dasharray="4"/>
+                        <line x1="80" y1="180" x2="650" y2="180" stroke="#e6def5" stroke-width="1" stroke-dasharray="4"/>
+                        <line x1="80" y1="120" x2="650" y2="120" stroke="#e6def5" stroke-width="1" stroke-dasharray="4"/>
+                        <line x1="80" y1="60" x2="650" y2="60" stroke="#e6def5" stroke-width="1" stroke-dasharray="4"/>
+                        <line x1="80" y1="30" x2="80" y2="300" stroke="#8a7aaa" stroke-width="1.5"/>
+                        <line x1="80" y1="300" x2="650" y2="300" stroke="#8a7aaa" stroke-width="1.5"/>
+                        <text x="70" y="305" text-anchor="end" font-size="12" fill="#8a7aaa">0%</text>
+                        <text x="70" y="245" text-anchor="end" font-size="12" fill="#8a7aaa">20%</text>
+                        <text x="70" y="185" text-anchor="end" font-size="12" fill="#8a7aaa">40%</text>
+                        <text x="70" y="125" text-anchor="end" font-size="12" fill="#8a7aaa">60%</text>
+                        <text x="70" y="65" text-anchor="end" font-size="12" fill="#8a7aaa">80%</text>
+                        <polyline points="130,186.6 250,173.1 370,165 490,156.9 610,143.4" fill="none" stroke="#9b7bcb" stroke-width="3" stroke-linejoin="round" />
+                        <circle cx="130" cy="186.6" r="7" fill="#9b7bcb" stroke="white" stroke-width="2" />
+                        <circle cx="250" cy="173.1" r="7" fill="#9b7bcb" stroke="white" stroke-width="2" />
+                        <circle cx="370" cy="165" r="7" fill="#9b7bcb" stroke="white" stroke-width="2" />
+                        <circle cx="490" cy="156.9" r="7" fill="#9b7bcb" stroke="white" stroke-width="2" />
+                        <circle cx="610" cy="143.4" r="7" fill="#9b7bcb" stroke="white" stroke-width="2" />
+                        <text x="130" y="176" text-anchor="middle" font-size="12" font-weight="bold" fill="#6b4e9e">42%</text>
+                        <text x="250" y="162" text-anchor="middle" font-size="12" font-weight="bold" fill="#6b4e9e">47%</text>
+                        <text x="370" y="154" text-anchor="middle" font-size="12" font-weight="bold" fill="#6b4e9e">50%</text>
+                        <text x="490" y="145" text-anchor="middle" font-size="12" font-weight="bold" fill="#6b4e9e">53%</text>
+                        <text x="610" y="132" text-anchor="middle" font-size="12" font-weight="bold" fill="#6b4e9e">57%</text>
+                        <text x="130" y="320" text-anchor="middle" font-size="12" fill="#8a7aaa">2015</text>
+                        <text x="250" y="320" text-anchor="middle" font-size="12" fill="#8a7aaa">2018</text>
+                        <text x="370" y="320" text-anchor="middle" font-size="12" fill="#8a7aaa">2021</text>
+                        <text x="490" y="320" text-anchor="middle" font-size="12" fill="#8a7aaa">2023</text>
+                        <text x="610" y="320" text-anchor="middle" font-size="12" fill="#8a7aaa">2026</text>
+                        <text x="25" y="170" text-anchor="middle" font-size="12" fill="#8a7aaa" transform="rotate(-90, 25, 170)">Доля женщин</text>
+                    </svg>
+                </div>
+                <div class="tooltip-note">*Процент женщин среди руководителей организаций и их структурных подразделений (данные Белстат)</div>
+                <div class="source-note">Белстат, ежегодные отчёты 2015–2026</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ПРАВИТЕЛЬСТВО -->
+    <div id="government" class="tab-section">
+        <div class="container">
+            <h2 class="section-title">Женщины в высшем руководстве Беларуси</h2>
+            <table class="data-table">
+                <thead><tr><th>Фамилия, Имя, Отчество</th><th>Должность</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>Кочанова Наталья Ивановна</strong></td><td>Председатель Совета Республики</td></tr>
+                    <tr><td><strong>Петкевич Наталья Владимировна</strong></td><td>Заместитель Премьер-министра</td></tr>
+                    <tr><td><strong>Харлап Татьяна Викторовна</strong></td><td>Глава администрации Китайско-Белорусского индустриального парка «Великий камень»</td></tr>
+                    <tr><td><strong>Биленко Алла Валерьевна</strong></td><td>Заместитель Председателя Национального статистического комитета</td></tr>
+                    <tr><td><strong>Осмоловская Наталья Николаевна</strong></td><td>Председатель Костюковичского райисполкома</td></tr>
+                    <tr><td><strong>Эйсмонт Наталья Николаевна</strong></td><td>Пресс-секретарь Президента</td></tr>
+                    <tr><td><strong>Чуприс Ольга Ивановна</strong></td><td>Заместитель Главы Администрации Президента</td></tr>
+                    <tr><td><strong>Кроткова Елена Михайловна</strong></td><td>Первый заместитель министра здравоохранения</td></tr>
+                    <tr><td><strong>Филиппова Наталья Александровна</strong></td><td>Первый заместитель министра юстиции</td></tr>
+                    <tr><td><strong>Артеменко Марина Викторовна</strong></td><td>Заместитель министра труда и социальной защиты</td></tr>
+                </tbody>
+            </table>
+            <div class="info-block">
+                <p>В Совете Республики восьмого созыва — 18 женщин из 56 членов (32%). В Палате представителей — 33% женщин. Среди госслужащих высшего звена женщины составляют 57%.</p>
+                <p>В 2026 году произошёл ряд значимых назначений женщин на высокие государственные должности, включая посты заместителей председателя Белстата, заместителей министров здравоохранения, юстиции, труда и социальной защиты.</p>
+            </div>
+            <div class="source-note">Совет Республики, Администрация Президента, Белстат, данные кадровых решений Президента (январь-февраль 2026)</div>
+        </div>
+    </div>
+
+    <!-- БГЭУ — ТАБЛИЦЫ -->
+    <div id="bseu" class="tab-section">
+        <div class="container">
+            <h2 class="section-title">БГЭУ: женщины в руководстве</h2>
+            
+            <h3 class="subheading">Ректорат и проректоры</h3>
+            <table class="data-table">
+                <thead><tr><th>Должность</th><th>Фамилия, Имя, Отчество</th></tr></thead>
+                <tbody>
+                    <tr><td>Первый проректор</td><td>Садовская Татьяна Владимировна</td></tr>
+                    <tr><td>Проректор по учебной работе</td><td>Морозевич Ольга Анатольевна</td></tr>
+                </tbody>
+            </table>
+
+            <h3 class="subheading">Деканы факультетов</h3>
+            <table class="data-table">
+                <thead><tr><th>Факультет</th><th>Декан</th></tr></thead>
+                <tbody>
+                    <tr><td>Социально-экономический факультет</td><td>Буева Анастасия Олеговна</td></tr>
+                    <tr><td>Факультет маркетинга и логистики</td><td>Лапина Светлана Николаевна</td></tr>
+                    <tr><td>Факультет экономики и менеджмента</td><td>Петриченко Елена Владимировна</td></tr>
+                    <tr><td>Факультет цифровой экономики</td><td>Майоровская Светлана Владимировна</td></tr>
+                    <tr><td>Учетно-экономический факультет</td><td>Маталыцкая Светлана Константиновна</td></tr>
+                    <tr><td>Факультет финансов и банковского дела</td><td>Лесневская Наталья Алексеевна</td></tr>
+                    <tr><td>Факультет международных бизнес-коммуникаций</td><td>Малашенко Елена Александровна</td></tr>
+                    <tr><td>Факультет права</td><td>Гаращенко Елена Александровна</td></tr>
+                </tbody>
+            </table>
+
+            <h3 class="subheading">Заведующие кафедрами (женщины)</h3>
+            <table class="data-table">
+                <tbody>
+                    <tr><td>Белова Светлана Олеговна</td><td>Белова Ксения Александровна</td><td>Богаревич Наталия Олеговна</td></tr>
+                    <tr><td>Буховец Татьяна Валерьевна</td><td>Головач Ольга Владимировна</td><td>Ерчак Ольга Вячеславовна</td></tr>
+                    <tr><td>Петрушкевич Елена Николаевна</td><td>Лашук Ирина Валерьевна</td><td>Рудковская Ольга Геннадьевна</td></tr>
+                    <tr><td>Таранова Татьяна Сергеевна</td><td>Румянцева Оксана Игоревна</td><td>Нехорошева Людмила Николаевна</td></tr>
+                    <tr><td colspan="2">Маркусенко Марина Викторовна</td><td></td></tr>
+                </tbody>
+            </table>
+
+            <h3 class="subheading">Заместители деканов</h3>
+            <table class="data-table">
+                <tbody>
+                    <tr><td>Кардаш Юлия Николаевна</td><td>Анищенко Валентина Сергеевна</td></tr>
+                    <tr><td>Гулина Ольга Валериевна</td><td>Миловзорова Юлия Сергеевна</td></tr>
+                </tbody>
+            </table>
+            <div class="source-note">БГЭУ, 2025–2026</div>
+        </div>
+    </div>
+
+    <!-- НАУКА — только оставшиеся исследования (без двух удалённых фрагментов) -->
+    <div id="science" class="tab-section">
+        <div class="container">
+            <h2 class="section-title">Научные исследования о женщинах в Беларуси</h2>
+            
+            <div class="stats-highlight">
+                <h3 style="color: #4a3b6e; margin-bottom: 12px;">Ключевые статистические данные (Белстат, 2026)</h3>
+                <p>• <strong>57%</strong> государственных служащих высшего звена — женщины</p>
+                <p>• <strong>50%</strong> руководителей организаций — женщины, при этом в 49% случаев они занимают должность первого лица</p>
+                <p>• <strong>70,4%</strong> руководителей сельских, поселковых и городских исполнительных комитетов и их заместителей — женщины</p>
+                <p>• <strong>66%</strong> судей — женщины</p>
+                <p>• <strong>42%</strong> работающих женщин имеют высшее образование (среди мужчин — 30%)</p>
+                <p>• <strong>44%</strong> женщин-руководителей воспитывают несовершеннолетних детей</p>
+            </div>
+
+            <div class="research-item">
+                <h3>Типологическое описание женщин-ученых Национальной академии наук Беларуси</h3>
+                <p>Алеся Соловей, научный сотрудник Института социологии НАН Беларуси, представила эмпирическое социологическое исследование, посвященное типологизации женщин-ученых НАН Беларуси. В работе рассматриваются единые для всей классифицируемой совокупности эмпирически обнаруженные и существенные признаки, на основе которых выделены и охарактеризованы типы женщин-ученых. Исследование позволяет лучше понять социально-профессиональный портрет женщин в белорусской академической науке.</p>
+                <div class="source">Источник: Соловей А. «Типологическое описание женщин-ученых Национальной академии наук Беларуси», сборник «Женщины-ученые Беларуси и Польши», БГУ, 2020</div>
+            </div>
+
+            <div class="research-item">
+                <h3>Роль женщин-ученых в развитии науки и образования (Международный форум, БГУ, 2026)</h3>
+                <p>Сборник научных статей участников Международного форума женщин-ученых, посвященного 105-летию БГУ. В издание вошли статьи представителей Беларуси, России, Китая, Кыргызстана, Азербайджана, Индии, Ирака — специалистов в области биологии, дизайна, журналистики, культурологии, медицины, менеджмента, педагогики, психологии, социологии, физики, филологии, философии, химии, этнологии. Адресуется ученым, преподавателям, аспирантам, магистрантам, студентам, а также всем, кто интересуется вопросами актуализации проблемы вклада женщин-ученых в науку.</p>
+                <div class="source">Источник: «Роль женщин-ученых в развитии науки и образования», БГУ / РИВШ, 2026, ISBN 978-985-586-983-3</div>
+            </div>
+
+            <div class="research-item">
+                <h3>Женщины-ученые Беларуси и Китая: материалы II Международной научно-практической конференции (2024)</h3>
+                <p>Сборник научных материалов и докладов, представленных на русском, белорусском и китайском языках, II Международной научно-практической конференции «Женщины-ученые Беларуси и Китая», организованной первичной организацией ОО «Белорусский союз женщин» БГУ в январе 2024 г. В сборнике рассматриваются вопросы актуализации проблемы вклада женщин-ученых в науку, международного научного сотрудничества и гендерного равенства в академической среде.</p>
+                <div class="source">Источник: БГУ, редкол.: И. В. Казакова (гл. ред.), Г. А. Фофанова, Чжан Хуншань, 2024</div>
+            </div>
+
+            <div class="research-item">
+                <h3>Научные труды БГЭУ: междисциплинарные гендерные исследования</h3>
+                <p>Сборник «Научные труды БГЭУ» (ISSN 2219-9772) регулярно публикует статьи по гендерной проблематике. В редколлегию сборника по социологическим наукам входят доктор социологических наук Кучко Е.Е. и кандидат социологических наук Лашук И.В. (кафедра экономической социологии и психологии предпринимательской деятельности БГЭУ). Публикуются исследования по вопросам гендерного равенства, социологии семьи, положения женщин в экономике и управлении. В электронной библиотеке БГЭУ представлены работы: «Женское предпринимательство через призму гендерного равенства» (Горкун П.А., 2022), «Женщина-руководитель как невостребованный ресурс управления» (Пузыревская М.И., 2007), «Женщины и мужчины Республики Беларусь: демографический аспект» (Гончар Е.А. и др., 2024).</p>
+                <div class="source">Источник: Научно-исследовательская работа БГЭУ (nir.bseu.by), Электронная библиотека БГЭУ (edoc.bseu.by)</div>
+            </div>
+
+            <div class="research-item">
+                <h3>Лаборатория «Женщины в политике» (БГЭУ)</h3>
+                <p>Социально-экономический факультет БГЭУ, руководитель — декан Буева Анастасия Олеговна. Регулярные семинары по гендерному балансу в органах власти, анализ представленности женщин в политических институтах Беларуси. В рамках работы лаборатории проводятся исследования карьерного продвижения женщин в системе государственного управления и высшего образования.</p>
+                <div class="source">БГЭУ, 2025–2026</div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <div class="container">
+        <p>© 2026 | Женщины в управлении и науке: Беларусь, Правительство, БГЭУ. На основе данных Белстата, Института социологии НАН, БГЭУ, БГУ.</p>
+    </div>
+</footer>
+
+<script>
+    const tabButtons = document.querySelectorAll('.main-btn');
+    const sections = document.querySelectorAll('.tab-section');
+
+    function activateTab(tabId) {
+        sections.forEach(section => {
+            section.classList.remove('active-tab');
+        });
+        const activeSection = document.getElementById(tabId);
+        if (activeSection) {
+            activeSection.classList.add('active-tab');
+            activeSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    }
+
+    tabButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const tabId = btn.getAttribute('data-tab');
+            if (tabId) {
+                activateTab(tabId);
+            }
+        });
+    });
+</script>
+</body>
+</html>
