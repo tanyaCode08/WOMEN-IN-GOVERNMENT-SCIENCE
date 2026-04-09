@@ -1,97 +1,108 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Женщины в управлении и науке</title>
+    <title>Женщины в управлении и науке | Беларусь</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif; background: #f8f5fc; color: #2d2a3e; line-height: 1.5; font-size: 22px; }
+        /* Увеличен базовый размер шрифта с 22px до 24px для лучшей читаемости */
+        body { font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif; background: #f8f5fc; color: #2d2a3e; line-height: 1.5; font-size: 24px; }
         .container { max-width: 1400px; margin: 0 auto; padding: 0 32px; }
-        header { background: #ffffff; color: #4a3b6e; padding: 28px 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 4px 16px rgba(0,0,0,0.02), 0 1px 2px rgba(0,0,0,0.05); border-bottom: 1px solid #e4daf2; }
-        .header-flex { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
-        .logo h1 { font-size: 2.4rem; font-weight: 700; background: linear-gradient(135deg, #6b4e9e, #9b7bcb); background-clip: text; -webkit-background-clip: text; color: transparent; }
-        .logo p { font-size: 1.1rem; opacity: 0.7; color: #6a5a8a; }
-        .hero-buttons { background: linear-gradient(105deg, #f3effa 0%, #ede7f8 100%); color: #2d2a3e; padding: 100px 0 110px; text-align: center; border-bottom: 1px solid #e0d6ee; }
-        .hero-buttons h2 { font-size: 3.6rem; font-weight: 800; margin-bottom: 28px; color: #4a3b6e; }
-        .hero-buttons p { font-size: 1.6rem; max-width: 800px; margin: 0 auto 52px; opacity: 0.8; color: #5e5280; }
-        .main-buttons { display: flex; flex-wrap: wrap; justify-content: center; gap: 36px; }
-        .main-btn { background: #ffffff; border: 1px solid #cdbfe6; padding: 20px 48px; border-radius: 60px; font-weight: 700; font-size: 1.4rem; color: #6b4e9e; text-decoration: none; transition: all 0.25s ease; cursor: pointer; display: inline-flex; align-items: center; gap: 14px; box-shadow: 0 2px 6px rgba(0,0,0,0.02); }
-        .main-btn:hover { background: #6b4e9e; color: white; border-color: #6b4e9e; transform: translateY(-3px); box-shadow: 0 12px 22px rgba(0,0,0,0.08); }
-        .main-btn.active { background: #6b4e9e; color: white; border-color: #6b4e9e; box-shadow: 0 8px 20px rgba(107, 78, 158, 0.3); }
-        .tab-section { display: none; padding: 80px 0; border-bottom: 1px solid #e4daf2; animation: fade 0.3s ease; }
+        header { background: #ffffff; color: #4a3b6e; padding: 32px 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 4px 16px rgba(0,0,0,0.02), 0 1px 2px rgba(0,0,0,0.05); border-bottom: 1px solid #e4daf2; }
+        .header-flex { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
+        .logo h1 { font-size: 2.8rem; font-weight: 800; background: linear-gradient(135deg, #6b4e9e, #9b7bcb); background-clip: text; -webkit-background-clip: text; color: transparent; letter-spacing: -0.01em; }
+        .logo p { font-size: 1.3rem; opacity: 0.7; color: #6a5a8a; margin-top: 8px; }
+        .hero-buttons { background: linear-gradient(105deg, #f3effa 0%, #ede7f8 100%); color: #2d2a3e; padding: 110px 0 120px; text-align: center; border-bottom: 1px solid #e0d6ee; }
+        .hero-buttons h2 { font-size: 4rem; font-weight: 800; margin-bottom: 32px; color: #4a3b6e; line-height: 1.2; }
+        .hero-buttons p { font-size: 1.8rem; max-width: 850px; margin: 0 auto 56px; opacity: 0.85; color: #5e5280; }
+        .main-buttons { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; }
+        .main-btn { background: #ffffff; border: 2px solid #cdbfe6; padding: 22px 52px; border-radius: 80px; font-weight: 700; font-size: 1.6rem; color: #6b4e9e; text-decoration: none; transition: all 0.25s ease; cursor: pointer; display: inline-flex; align-items: center; gap: 16px; box-shadow: 0 2px 6px rgba(0,0,0,0.02); letter-spacing: 0.3px; }
+        .main-btn:hover { background: #6b4e9e; color: white; border-color: #6b4e9e; transform: translateY(-3px); box-shadow: 0 14px 26px rgba(0,0,0,0.1); }
+        .main-btn.active { background: #6b4e9e; color: white; border-color: #6b4e9e; box-shadow: 0 10px 24px rgba(107, 78, 158, 0.35); }
+        .tab-section { display: none; padding: 0px 0; border-bottom: 1px solid #e4daf2; animation: fade 0.3s ease; }
         .tab-section.active-tab { display: block; }
-        @keyframes fade { from { opacity: 0; transform: translateY(10px);} to { opacity: 1; transform: translateY(0);} }
-        .section-title { font-size: 2.9rem; font-weight: 700; margin-bottom: 52px; border-left: 8px solid #9b7bcb; padding-left: 32px; color: #4a3b6e; }
-        .stats-grid { display: flex; flex-wrap: wrap; gap: 34px; justify-content: center; margin-bottom: 64px; }
-        .stat-card { background: #ffffff; border-radius: 36px; padding: 36px 28px; text-align: center; box-shadow: 0 12px 24px rgba(0,0,0,0.02); flex: 1 1 210px; border-bottom: 6px solid #9b7bcb; transition: 0.2s; }
-        .stat-number { font-size: 3.4rem; font-weight: 800; color: #6b4e9e; }
-        .stat-label { font-size: 1.1rem; font-weight: 500; color: #5e5280; margin-top: 12px; }
-        .chart-container { background: #ffffff; border-radius: 48px; padding: 42px; margin: 48px 0; border: 1px solid #e4daf2; box-shadow: 0 4px 12px rgba(0,0,0,0.02); }
-        .chart-container h3 { font-size: 2rem; margin-bottom: 38px; color: #4a3b6e; }
-        .bar-chart { display: flex; flex-direction: column; gap: 32px; }
-        .bar-item { display: flex; align-items: center; flex-wrap: wrap; gap: 22px; }
-        .bar-label { width: 380px; font-weight: 600; font-size: 1.2rem; color: #4a3b6e; }
-        .bar-bg { flex: 1; background: #ede7f8; border-radius: 50px; overflow: hidden; height: 56px; }
-        .bar-fill { background: #9b7bcb; height: 100%; display: flex; align-items: center; justify-content: flex-end; padding-right: 28px; color: white; font-weight: bold; font-size: 1.2rem; border-radius: 50px; }
+        @keyframes fade { from { opacity: 0; transform: translateY(12px);} to { opacity: 1; transform: translateY(0);} }
+        .section-title { font-size: 3.4rem; font-weight: 800; margin-bottom: 56px; border-left: 10px solid #9b7bcb; padding-left: 36px; color: #4a3b6e; letter-spacing: -0.01em; }
+        .stats-grid { display: flex; flex-wrap: wrap; gap: 38px; justify-content: center; margin-bottom: 70px; }
+        .stat-card { background: #ffffff; border-radius: 40px; padding: 40px 32px; text-align: center; box-shadow: 0 12px 28px rgba(0,0,0,0.02); flex: 1 1 230px; border-bottom: 8px solid #9b7bcb; transition: 0.2s; }
+        .stat-number { font-size: 4rem; font-weight: 800; color: #6b4e9e; margin-bottom: 12px; }
+        .stat-label { font-size: 1.3rem; font-weight: 600; color: #5e5280; margin-top: 12px; line-height: 1.4; }
+        .chart-container { background: #ffffff; border-radius: 52px; padding: 48px; margin: 56px 0; border: 1px solid #e4daf2; box-shadow: 0 6px 16px rgba(0,0,0,0.02); }
+        .chart-container h3 { font-size: 2.3rem; margin-bottom: 44px; color: #4a3b6e; font-weight: 700; }
+        .bar-chart { display: flex; flex-direction: column; gap: 36px; }
+        .bar-item { display: flex; align-items: center; flex-wrap: wrap; gap: 28px; }
+        .bar-label { width: 420px; font-weight: 700; font-size: 1.35rem; color: #4a3b6e; }
+        .bar-bg { flex: 1; background: #ede7f8; border-radius: 60px; overflow: hidden; height: 64px; }
+        .bar-fill { background: #9b7bcb; height: 100%; display: flex; align-items: center; justify-content: flex-end; padding-right: 32px; color: white; font-weight: bold; font-size: 1.4rem; border-radius: 60px; }
         
-        .line-chart-wrapper { width: 100%; overflow-x: auto; margin: 20px 0; }
+        .line-chart-wrapper { width: 100%; overflow-x: auto; margin: 28px 0; }
         .line-chart-svg { display: block; margin: 0 auto; }
         
-        .industry-donut-grid { display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; margin: 48px 0; }
-        .industry-donut-card { background: #ffffff; border-radius: 32px; padding: 28px 20px; flex: 1; min-width: 220px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border: 1px solid #e9e0f5; transition: transform 0.2s; text-align: center; }
-        .industry-donut-card:hover { transform: translateY(-4px); }
-        .industry-donut-card h4 { font-size: 1.2rem; color: #4a3b6e; margin-bottom: 20px; min-height: 60px; display: flex; align-items: center; justify-content: center; }
-        .donut { width: 180px; height: 180px; position: relative; margin: 0 auto; }
+        .industry-donut-grid { display: flex; flex-wrap: wrap; gap: 34px; justify-content: center; margin: 56px 0; }
+        .industry-donut-card { background: #ffffff; border-radius: 38px; padding: 32px 24px; flex: 1; min-width: 260px; box-shadow: 0 6px 22px rgba(0,0,0,0.05); border: 1px solid #e9e0f5; transition: transform 0.2s; text-align: center; }
+        .industry-donut-card:hover { transform: translateY(-5px); }
+        .industry-donut-card h4 { font-size: 1.45rem; color: #4a3b6e; margin-bottom: 24px; min-height: 70px; display: flex; align-items: center; justify-content: center; font-weight: 700; }
+        .donut { width: 200px; height: 200px; position: relative; margin: 0 auto; }
         .donut svg { width: 100%; height: 100%; transform: rotate(-90deg); }
         .donut-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; }
-        .donut-percent { font-size: 2rem; font-weight: 800; color: #6b4e9e; }
-        .donut-label { font-size: 0.8rem; color: #8a7aaa; }
-        .industry-stats-row { display: flex; justify-content: space-between; margin-top: 20px; padding-top: 15px; border-top: 1px solid #ede7f8; }
+        .donut-percent { font-size: 2.4rem; font-weight: 800; color: #6b4e9e; }
+        .donut-label { font-size: 1rem; color: #8a7aaa; font-weight: 500; }
+        .industry-stats-row { display: flex; justify-content: space-between; margin-top: 24px; padding-top: 18px; border-top: 2px solid #ede7f8; }
         
-        .dashboard-grid { display: flex; flex-wrap: wrap; gap: 40px; justify-content: center; margin: 48px 0; }
-        .dashboard-card { background: #ffffff; border-radius: 32px; padding: 28px; flex: 1; min-width: 280px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border: 1px solid #e9e0f5; transition: transform 0.2s; text-align: center; }
-        .dashboard-card:hover { transform: translateY(-4px); }
-        .dashboard-card h4 { font-size: 1.4rem; color: #4a3b6e; margin-bottom: 20px; }
-        .circular-chart { display: flex; justify-content: center; margin-bottom: 20px; }
-        .stats-row { display: flex; justify-content: space-between; margin-top: 20px; padding-top: 15px; border-top: 1px solid #ede7f8; }
+        .dashboard-grid { display: flex; flex-wrap: wrap; gap: 44px; justify-content: center; margin: 56px 0; }
+        .dashboard-card { background: #ffffff; border-radius: 38px; padding: 34px 28px; flex: 1; min-width: 300px; box-shadow: 0 6px 22px rgba(0,0,0,0.05); border: 1px solid #e9e0f5; transition: transform 0.2s; text-align: center; }
+        .dashboard-card:hover { transform: translateY(-5px); }
+        .dashboard-card h4 { font-size: 1.7rem; color: #4a3b6e; margin-bottom: 28px; font-weight: 800; }
+        .circular-chart { display: flex; justify-content: center; margin-bottom: 24px; }
+        .stats-row { display: flex; justify-content: space-between; margin-top: 24px; padding-top: 18px; border-top: 2px solid #ede7f8; }
         .stat-item { text-align: center; flex: 1; }
-        .stat-value { font-size: 1.3rem; font-weight: 700; color: #6b4e9e; }
-        .stat-desc { font-size: 0.8rem; color: #8a7aaa; }
-        .info-cards { display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; margin-bottom: 50px; }
-        .info-card { background: linear-gradient(135deg, #ffffff 0%, #f9f7fe 100%); border-radius: 40px; padding: 32px; flex: 1; min-width: 250px; text-align: center; box-shadow: 0 8px 20px rgba(0,0,0,0.08); border: 1px solid #e4daf2; transition: transform 0.2s; }
-        .info-card:hover { transform: translateY(-5px); }
-        .info-card .percent { font-size: 4rem; font-weight: 800; color: #6b4e9e; line-height: 1; }
-        .info-card .label { font-size: 1.2rem; font-weight: 600; color: #4a3b6e; margin: 15px 0 8px 0; }
-        .info-card .detail { font-size: 0.95rem; color: #8a7aaa; }
-        .modern-table { width: 100%; border-collapse: collapse; background: white; border-radius: 36px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.05); margin-bottom: 48px; }
-        .modern-table td { padding: 18px 24px; border-bottom: 1px solid #ede7f8; color: #4a3b6e; font-size: 1rem; }
+        .stat-value { font-size: 1.6rem; font-weight: 800; color: #6b4e9e; }
+        .stat-desc { font-size: 1rem; color: #8a7aaa; font-weight: 500; margin-top: 6px; }
+        .info-cards { display: flex; flex-wrap: wrap; gap: 34px; justify-content: center; margin-bottom: 58px; }
+        .info-card { background: linear-gradient(135deg, #ffffff 0%, #f9f7fe 100%); border-radius: 48px; padding: 38px 28px; flex: 1; min-width: 270px; text-align: center; box-shadow: 0 12px 26px rgba(0,0,0,0.08); border: 1px solid #e4daf2; transition: transform 0.2s; }
+        .info-card:hover { transform: translateY(-6px); }
+        .info-card .percent { font-size: 4.6rem; font-weight: 800; color: #6b4e9e; line-height: 1; }
+        .info-card .label { font-size: 1.45rem; font-weight: 700; color: #4a3b6e; margin: 18px 0 10px 0; }
+        .info-card .detail { font-size: 1.1rem; color: #8a7aaa; }
+        .modern-table { width: 100%; border-collapse: collapse; background: white; border-radius: 44px; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,0.05); margin-bottom: 56px; }
+        .modern-table td { padding: 22px 28px; border-bottom: 1px solid #ede7f8; color: #4a3b6e; font-size: 1.15rem; font-weight: 500; }
         .modern-table tr { transition: background 0.2s; }
         .modern-table tr:hover { background: #f9f7fe; }
         .modern-table tr:last-child td { border-bottom: none; }
-        .ref-list { margin-top: 30px; padding: 24px 32px; background: #f9f7fe; border-radius: 36px; font-size: 0.9rem; color: #5e5280; border-left: 5px solid #9b7bcb; }
-        .ref-list p { margin-bottom: 8px; }
-        .ref-list a { color: #6b4e9e; text-decoration: none; border-bottom: 1px dotted #c0b2e0; }
+        .ref-list { margin-top: 34px; padding: 28px 36px; background: #f9f7fe; border-radius: 44px; font-size: 1.05rem; color: #5e5280; border-left: 6px solid #9b7bcb; }
+        .ref-list p { margin-bottom: 10px; }
+        .ref-list a { color: #6b4e9e; text-decoration: none; border-bottom: 1px dotted #c0b2e0; font-weight: 500; }
         .ref-list a:hover { color: #4a3b6e; border-bottom: 1px solid #6b4e9e; }
-        .research-item { background: #fefcff; padding: 38px; border-radius: 36px; margin: 42px 0; border: 1px solid #e4daf2; }
-        .research-item h3 { color: #6b4e9e; margin-bottom: 18px; font-size: 1.8rem; }
-        .research-item p { color: #5e5280; line-height: 1.6; margin-bottom: 14px; font-size: 1.1rem; }
-        .research-item .source { font-size: 1rem; color: #8a7aaa; margin-top: 18px; font-style: italic; }
-        footer { background: #f3effa; color: #6a5a8a; padding: 60px 0; text-align: center; border-top: 1px solid #e4daf2; font-size: 1.1rem; }
-        .source-note { font-size: 0.95rem; color: #8a7aaa; margin-top: 28px; text-align: right; }
-        .subheading { font-size: 2rem; font-weight: 700; color: #4a3b6e; margin: 52px 0 32px 0; padding-left: 24px; border-left: 5px solid #9b7bcb; }
-        @media (max-width: 780px) {
-            body { font-size: 18px; }
-            .section-title { font-size: 2.2rem; }
+        .research-item { background: #fefcff; padding: 44px; border-radius: 44px; margin: 48px 0; border: 1px solid #e4daf2; }
+        .research-item h3 { color: #6b4e9e; margin-bottom: 22px; font-size: 2.1rem; font-weight: 800; }
+        .research-item p { color: #5e5280; line-height: 1.6; margin-bottom: 18px; font-size: 1.25rem; }
+        .research-item .source { font-size: 1.15rem; color: #8a7aaa; margin-top: 22px; font-style: italic; }
+        .footer-container { background: #f3effa; color: #6a5a8a; padding: 60px 0; margin-top: 50px; text-align: center; border-top: 1px solid #e4daf2; font-size: 1.25rem; }
+        .source-note { font-size: 1rem; color: #8a7aaa; margin-top: 32px; text-align: right; font-style: italic; }
+        .subheading { font-size: 2.4rem; font-weight: 800; color: #4a3b6e; margin: 60px 0 38px 0; padding-left: 28px; border-left: 7px solid #9b7bcb; }
+        @media (max-width: 880px) {
+            body { font-size: 20px; }
+            .section-title { font-size: 2.6rem; }
             .bar-label { width: 100%; }
-            .hero-buttons h2 { font-size: 2.5rem; }
-            .main-btn { padding: 14px 32px; font-size: 1.2rem; }
-            .chart-container h3 { font-size: 1.6rem; }
-            .subheading { font-size: 1.7rem; }
-            .info-card .percent { font-size: 2.8rem; }
-            .modern-table td { padding: 12px 16px; }
-            .dashboard-card, .industry-donut-card { min-width: 260px; }
+            .hero-buttons h2 { font-size: 3rem; }
+            .main-btn { padding: 16px 36px; font-size: 1.4rem; }
+            .chart-container h3 { font-size: 1.9rem; }
+            .subheading { font-size: 2rem; }
+            .info-card .percent { font-size: 3.4rem; }
+            .modern-table td { padding: 16px 20px; font-size: 1rem; }
+            .dashboard-card, .industry-donut-card { min-width: 280px; }
+            .stat-number { font-size: 3rem; }
+            .stat-label { font-size: 1.1rem; }
         }
+        @media (max-width: 560px) {
+            body { font-size: 18px; }
+            .hero-buttons h2 { font-size: 2.4rem; }
+            .main-btn { font-size: 1.2rem; padding: 12px 28px; }
+            .section-title { font-size: 2.2rem; }
+        }
+        button { font-family: inherit; }
     </style>
 </head>
 <body>
@@ -99,7 +110,7 @@
 <header>
     <div class="container header-flex">
         <div class="logo">
-            <h1>WOMEN IN GOVERNMENT & SCIENCE</h1>
+            <h1>Женщины в управлении и науке</h1>
             <p></p>
         </div>
     </div>
@@ -108,19 +119,17 @@
 <section class="hero-buttons">
     <div class="container">
         <h2>Женщины в управлении и науке:<br> Беларусь, Правительство, Образование</h2>
-        <p></p>
         <div class="main-buttons">
-            <!-- АКТИВНАЯ КНОПКА: СТАТИСТИКА -->
-            <button class="main-btn active" data-tab="stats">Статистика</button>
-            <button class="main-btn" data-tab="government">Правительство</button>
-            <button class="main-btn" data-tab="education">Образование</button>
-            <button class="main-btn" data-tab="science">Информационные источники</button>
+            <button class="main-btn active" data-tab="stats"> Статистика</button>
+            <button class="main-btn" data-tab="government"> Правительство</button>
+            <button class="main-btn" data-tab="education"> Образование</button>
+            <button class="main-btn" data-tab="science"> Информационные источники</button>
         </div>
     </div>
 </section>
 
 <main>
-    <!-- СТАТИСТИКА — АКТИВНАЯ ВКЛАДКА ПРИ ЗАГРУЗКЕ -->
+    <!-- СТАТИСТИКА -->
     <div id="stats" class="tab-section active-tab">
         <div class="container">
             <h2 class="section-title">Ключевая статистика</h2>
@@ -133,10 +142,10 @@
             </div>
             
             <div class="chart-container">
-                <h3 style="margin-bottom: 28px; color: #4a3b6e;">Женщины в социально значимых отраслях</h3>
+                <h3> Женщины в социально значимых отраслях</h3>
                 <div class="industry-donut-grid">
                     <div class="industry-donut-card">
-                        <h4>Здравоохранение и социальные услуги</h4>
+                        <h4>Здравоохранение и соц.услуги</h4>
                         <div class="donut">
                             <svg viewBox="0 0 100 100">
                                 <circle cx="50" cy="50" r="42" fill="none" stroke="#ede7f8" stroke-width="12"/>
@@ -182,11 +191,10 @@
                 </div>
             </div>
 
-            <!-- Блок с динамикой 2014–2026 -->
             <div class="chart-container">
-                <h3 style="margin-bottom: 28px; color: #4a3b6e;">Процент женщин на руководящих должностях (2014–2026)</h3>
+                <h3> Процент женщин на руководящих должностях (2014–2026)</h3>
                 <div class="line-chart-wrapper">
-                    <svg class="line-chart-svg" width="100%" height="450" viewBox="0 0 950 450" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+                    <svg class="line-chart-svg" width="100%" height="470" viewBox="0 0 950 470" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
                         <defs>
                             <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
                                 <stop offset="0%" style="stop-color:#9b7bcb;stop-opacity:0.1" />
@@ -196,45 +204,46 @@
                                 <polygon points="0 0, 10 3.5, 0 7" fill="#8a7aaa" />
                             </marker>
                         </defs>
-                        <line x1="70" y1="380" x2="900" y2="380" stroke="#8a7aaa" stroke-width="2" marker-end="url(#arrowhead)"/>
-                        <line x1="70" y1="380" x2="70" y2="30" stroke="#8a7aaa" stroke-width="2" marker-end="url(#arrowhead)"/>
-                        <text x="470" y="430" text-anchor="middle" font-size="14" fill="#8a7aaa"></text>
-                        <line x1="70" y1="310" x2="900" y2="310" stroke="#e6def5" stroke-width="1.5" stroke-dasharray="6"/>
-                        <line x1="70" y1="210" x2="900" y2="210" stroke="#e6def5" stroke-width="1.5" stroke-dasharray="6"/>
-                        <line x1="70" y1="110" x2="900" y2="110" stroke="#e6def5" stroke-width="1.5" stroke-dasharray="6"/>
-                        <polygon points="70,380 130,277 195,277 260,277 325,247 390,254 455,221 520,196 585,186 650,186 715,214 780,212 845,205 900,205 900,380" fill="url(#lineGradient)" opacity="0.5"/>
-                        <polyline points="130,277 195,277 260,277 325,247 390,254 455,221 520,196 585,186 650,186 715,214 780,212 845,205" fill="none" stroke="#9b7bcb" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
-                        <circle cx="130" cy="277" r="6" fill="#9b7bcb" stroke="white" stroke-width="2"/><text x="130" y="265" text-anchor="middle" font-size="11" font-weight="bold" fill="#6b4e9e">45.9%</text>
-                        <circle cx="195" cy="277" r="6" fill="#9b7bcb" stroke="white" stroke-width="2"/><text x="195" y="265" text-anchor="middle" font-size="11" font-weight="bold" fill="#6b4e9e">45.9%</text>
-                        <circle cx="260" cy="277" r="6" fill="#9b7bcb" stroke="white" stroke-width="2"/><text x="260" y="265" text-anchor="middle" font-size="11" font-weight="bold" fill="#6b4e9e">45.9%</text>
-                        <circle cx="325" cy="247" r="6" fill="#9b7bcb" stroke="white" stroke-width="2"/><text x="325" y="235" text-anchor="middle" font-size="11" font-weight="bold" fill="#6b4e9e">47.6%</text>
-                        <circle cx="390" cy="254" r="6" fill="#9b7bcb" stroke="white" stroke-width="2"/><text x="390" y="242" text-anchor="middle" font-size="11" font-weight="bold" fill="#6b4e9e">47.2%</text>
-                        <circle cx="455" cy="221" r="6" fill="#9b7bcb" stroke="white" stroke-width="2"/><text x="455" y="209" text-anchor="middle" font-size="11" font-weight="bold" fill="#6b4e9e">49.1%</text>
-                        <circle cx="520" cy="196" r="6" fill="#9b7bcb" stroke="white" stroke-width="2"/><text x="520" y="184" text-anchor="middle" font-size="11" font-weight="bold" fill="#6b4e9e">50.5%</text>
-                        <circle cx="585" cy="186" r="6" fill="#9b7bcb" stroke="white" stroke-width="2"/><text x="585" y="174" text-anchor="middle" font-size="11" font-weight="bold" fill="#6b4e9e">51.1%</text>
-                        <circle cx="650" cy="186" r="6" fill="#9b7bcb" stroke="white" stroke-width="2"/><text x="650" y="174" text-anchor="middle" font-size="11" font-weight="bold" fill="#6b4e9e">51.1%</text>
-                        <circle cx="715" cy="214" r="6" fill="#9b7bcb" stroke="white" stroke-width="2"/><text x="715" y="202" text-anchor="middle" font-size="11" font-weight="bold" fill="#6b4e9e">49.5%</text>
-                        <circle cx="780" cy="212" r="6" fill="#9b7bcb" stroke="white" stroke-width="2"/><text x="780" y="200" text-anchor="middle" font-size="11" font-weight="bold" fill="#6b4e9e">49.6%</text>
-                        <circle cx="845" cy="205" r="7" fill="#6b4e9e" stroke="white" stroke-width="3"/><text x="845" y="190" text-anchor="middle" font-size="12" font-weight="bold" fill="#6b4e9e">50%</text>
-                        <text x="130" y="400" text-anchor="middle" font-size="13" fill="#8a7aaa">2014</text>
-                        <text x="195" y="400" text-anchor="middle" font-size="13" fill="#8a7aaa">2015</text>
-                        <text x="260" y="400" text-anchor="middle" font-size="13" fill="#8a7aaa">2016</text>
-                        <text x="325" y="400" text-anchor="middle" font-size="13" fill="#8a7aaa">2017</text>
-                        <text x="390" y="400" text-anchor="middle" font-size="13" fill="#8a7aaa">2018</text>
-                        <text x="455" y="400" text-anchor="middle" font-size="13" fill="#8a7aaa">2019</text>
-                        <text x="520" y="400" text-anchor="middle" font-size="13" fill="#8a7aaa">2020</text>
-                        <text x="585" y="400" text-anchor="middle" font-size="13" fill="#8a7aaa">2021</text>
-                        <text x="650" y="400" text-anchor="middle" font-size="13" fill="#8a7aaa">2022</text>
-                        <text x="715" y="400" text-anchor="middle" font-size="13" fill="#8a7aaa">2023</text>
-                        <text x="780" y="400" text-anchor="middle" font-size="13" fill="#8a7aaa">2024</text>
-                        <text x="845" y="400" text-anchor="middle" font-size="13" font-weight="bold" fill="#6b4e9e">2026</text>
+                        <line x1="70" y1="390" x2="900" y2="390" stroke="#8a7aaa" stroke-width="2" marker-end="url(#arrowhead)"/>
+                        <line x1="70" y1="390" x2="70" y2="40" stroke="#8a7aaa" stroke-width="2" marker-end="url(#arrowhead)"/>
+                        <text x="470" y="440" text-anchor="middle" font-size="15" fill="#8a7aaa"></text>
+                        <text x="20" y="210" text-anchor="middle" font-size="14" fill="#8a7aaa" transform="rotate(-90, 20, 210)"></text>
+                        <line x1="70" y1="320" x2="900" y2="320" stroke="#e6def5" stroke-width="1.5" stroke-dasharray="6"/>
+                        <line x1="70" y1="220" x2="900" y2="220" stroke="#e6def5" stroke-width="1.5" stroke-dasharray="6"/>
+                        <line x1="70" y1="120" x2="900" y2="120" stroke="#e6def5" stroke-width="1.5" stroke-dasharray="6"/>
+                        <polygon points="70,390 130,287 195,287 260,287 325,257 390,264 455,231 520,206 585,196 650,196 715,224 780,222 845,215 900,215 900,390" fill="url(#lineGradient)" opacity="0.5"/>
+                        <polyline points="130,287 195,287 260,287 325,257 390,264 455,231 520,206 585,196 650,196 715,224 780,222 845,215" fill="none" stroke="#9b7bcb" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+                        <circle cx="130" cy="287" r="7" fill="#9b7bcb" stroke="white" stroke-width="2.5"/><text x="130" y="274" text-anchor="middle" font-size="12" font-weight="bold" fill="#6b4e9e">45.9%</text>
+                        <circle cx="195" cy="287" r="7" fill="#9b7bcb" stroke="white" stroke-width="2.5"/><text x="195" y="274" text-anchor="middle" font-size="12" font-weight="bold" fill="#6b4e9e">45.9%</text>
+                        <circle cx="260" cy="287" r="7" fill="#9b7bcb" stroke="white" stroke-width="2.5"/><text x="260" y="274" text-anchor="middle" font-size="12" font-weight="bold" fill="#6b4e9e">45.9%</text>
+                        <circle cx="325" cy="257" r="7" fill="#9b7bcb" stroke="white" stroke-width="2.5"/><text x="325" y="244" text-anchor="middle" font-size="12" font-weight="bold" fill="#6b4e9e">47.6%</text>
+                        <circle cx="390" cy="264" r="7" fill="#9b7bcb" stroke="white" stroke-width="2.5"/><text x="390" y="251" text-anchor="middle" font-size="12" font-weight="bold" fill="#6b4e9e">47.2%</text>
+                        <circle cx="455" cy="231" r="7" fill="#9b7bcb" stroke="white" stroke-width="2.5"/><text x="455" y="218" text-anchor="middle" font-size="12" font-weight="bold" fill="#6b4e9e">49.1%</text>
+                        <circle cx="520" cy="206" r="7" fill="#9b7bcb" stroke="white" stroke-width="2.5"/><text x="520" y="193" text-anchor="middle" font-size="12" font-weight="bold" fill="#6b4e9e">50.5%</text>
+                        <circle cx="585" cy="196" r="7" fill="#9b7bcb" stroke="white" stroke-width="2.5"/><text x="585" y="183" text-anchor="middle" font-size="12" font-weight="bold" fill="#6b4e9e">51.1%</text>
+                        <circle cx="650" cy="196" r="7" fill="#9b7bcb" stroke="white" stroke-width="2.5"/><text x="650" y="183" text-anchor="middle" font-size="12" font-weight="bold" fill="#6b4e9e">51.1%</text>
+                        <circle cx="715" cy="224" r="7" fill="#9b7bcb" stroke="white" stroke-width="2.5"/><text x="715" y="211" text-anchor="middle" font-size="12" font-weight="bold" fill="#6b4e9e">49.5%</text>
+                        <circle cx="780" cy="222" r="7" fill="#9b7bcb" stroke="white" stroke-width="2.5"/><text x="780" y="209" text-anchor="middle" font-size="12" font-weight="bold" fill="#6b4e9e">49.6%</text>
+                        <circle cx="845" cy="215" r="8" fill="#6b4e9e" stroke="white" stroke-width="3.5"/><text x="845" y="198" text-anchor="middle" font-size="13" font-weight="bold" fill="#6b4e9e">50%</text>
+                        <text x="130" y="415" text-anchor="middle" font-size="14" fill="#8a7aaa">2014</text>
+                        <text x="195" y="415" text-anchor="middle" font-size="14" fill="#8a7aaa">2015</text>
+                        <text x="260" y="415" text-anchor="middle" font-size="14" fill="#8a7aaa">2016</text>
+                        <text x="325" y="415" text-anchor="middle" font-size="14" fill="#8a7aaa">2017</text>
+                        <text x="390" y="415" text-anchor="middle" font-size="14" fill="#8a7aaa">2018</text>
+                        <text x="455" y="415" text-anchor="middle" font-size="14" fill="#8a7aaa">2019</text>
+                        <text x="520" y="415" text-anchor="middle" font-size="14" fill="#8a7aaa">2020</text>
+                        <text x="585" y="415" text-anchor="middle" font-size="14" fill="#8a7aaa">2021</text>
+                        <text x="650" y="415" text-anchor="middle" font-size="14" fill="#8a7aaa">2022</text>
+                        <text x="715" y="415" text-anchor="middle" font-size="14" fill="#8a7aaa">2023</text>
+                        <text x="780" y="415" text-anchor="middle" font-size="14" fill="#8a7aaa">2024</text>
+                        <text x="845" y="415" text-anchor="middle" font-size="14" font-weight="bold" fill="#6b4e9e">2026</text>
                     </svg>
+                    <p style="font-size: 1rem; color:#8a7aaa; text-align:center; margin-top:18px;"></p>
                 </div>
             </div>
             
-            <!-- Блок с долей на руководящих позициях (СТОЛБЧАТАЯ ДИАГРАММА) теперь после динамики -->
             <div class="chart-container">
-                <h3 style="margin-bottom: 28px; color: #4a3b6e;">Доля женщин на руководящих позициях</h3>
+                <h3> Доля женщин на руководящих позициях</h3>
                 <div class="bar-chart">
                     <div class="bar-item"><div class="bar-label">Госслужащие высшего звена</div><div class="bar-bg"><div class="bar-fill" style="width: 57%;">57%</div></div></div>
                     <div class="bar-item"><div class="bar-label">Руководители организаций</div><div class="bar-bg"><div class="bar-fill" style="width: 50%;">50%</div></div></div>
@@ -246,12 +255,19 @@
                 </div>
             </div>
         </div>
+        <!-- Нижние кнопки навигации -->
+        <div class="footer-container">
+            <div class="main-buttons">
+                <button class="main-btn" data-tab="government"> Правительство</button>
+                <button class="main-btn" data-tab="education"> Образование</button>
+                <button class="main-btn" data-tab="science"> Информационные источники</button>
+            </div>
+        </div> 
     </div>
 
-    <!-- ПРАВИТЕЛЬСТВО: Статистические данные ПОДНЯТЫ НАВЕРХ -->
+<!-- ПРАВИТЕЛЬСТВО -->
     <div id="government" class="tab-section">
         <div class="container">
-            <!-- СТАТИСТИЧЕСКИЕ ДАННЫЕ (диаграммы) ПЕРЕМЕЩЕНЫ ВВЕРХ -->
             <div class="dashboard-grid" style="margin-top: 0;">
                 <div class="dashboard-card"><h4>Госслужащие высшего звена</h4><div class="circular-chart"><div class="donut"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="42" fill="none" stroke="#ede7f8" stroke-width="12"/><circle cx="50" cy="50" r="42" fill="none" stroke="#9b7bcb" stroke-width="12" stroke-dasharray="264" stroke-dashoffset="113.5" stroke-linecap="round"/></svg><div class="donut-text"><div class="donut-percent">57%</div><div class="donut-label">женщины</div></div></div></div><div class="stats-row"><div class="stat-item"><div class="stat-value">57%</div><div class="stat-desc">женщины</div></div><div class="stat-item"><div class="stat-value">43%</div><div class="stat-desc">мужчины</div></div></div></div>
                 <div class="dashboard-card"><h4>Парламент</h4><div class="circular-chart"><div class="donut"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="42" fill="none" stroke="#ede7f8" stroke-width="12"/><circle cx="50" cy="50" r="42" fill="none" stroke="#9b7bcb" stroke-width="12" stroke-dasharray="264" stroke-dashoffset="176.88" stroke-linecap="round"/></svg><div class="donut-text"><div class="donut-percent">33%</div><div class="donut-label">женщины</div></div></div></div><div class="stats-row"><div class="stat-item"><div class="stat-value">33%</div><div class="stat-desc">женщины-депутаты</div></div><div class="stat-item"><div class="stat-value">67%</div><div class="stat-desc">мужчины</div></div></div></div>
@@ -264,58 +280,81 @@
                 <tr><td><strong>Наталья Павлюченко</strong> — Министр труда и социальной защиты.</td></tr>
                 <tr><td><strong>Татьяна Лугина</strong> — Председатель концерна «Беллегпром».</td></tr>
                 <tr><td><strong>Ольга Шпилевская</strong> — Директор представительства МТРК «Мир» в Беларуси, председатель «Белорусского союза женщин».</td></tr>
-                <!-- </tbody></table> -->
-                
-            <!-- <h3 class="subheading">Судебная власть и другие ведомства</h3> -->
-            <!-- <table class="modern-table"><tbody> -->
                 <tr><td><strong>Наталья Тарасюк</strong> — Заместитель председателя Белстата.</td></tr>
                 <tr><td><strong>Ирина Абельская</strong> — Главный врач РКМЦ Управления делами Президента.</td></tr>
-                <tr><td><strong>Инна Медведева</strong> Председатель Национального статистического комитета Республики Беларусь.</td></tr>
+                <tr><td><strong>Инна Медведева</strong> — Председатель Национального статистического комитета Республики Беларусь.</td></tr>
                 </tbody></table>
+        </div>
+       
+
+
+        <!-- Нижние кнопки навигации -->
+        <div class="footer-container">
+            <div class="main-buttons">
+                <button class="main-btn" data-tab="stats"> Статистика</button>
+                <button class="main-btn" data-tab="education"> Образование</button>
+                <button class="main-btn" data-tab="science"> Информационные источники</button>
+            </div>
         </div>
     </div>
 
-    <!-- ОБРАЗОВАНИЕ -->
+    <!-- ОБРАЗОВАНИЕ (расширенный блок) -->
     <div id="education" class="tab-section">
         <div class="container">
             <h2 class="section-title">Женщины в руководстве вузов Беларуси</h2>
+            
+            <!-- ректораты -->
             <div class="dashboard-grid">
-                <div class="dashboard-card"><h4>БГЭУ</h4><div class="circular-chart"><div class="donut"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="42" fill="none" stroke="#ede7f8" stroke-width="12"/><circle cx="50" cy="50" r="42" fill="none" stroke="#9b7bcb" stroke-width="12" stroke-dasharray="264" stroke-dashoffset="176" stroke-linecap="round"/></svg><div class="donut-text"><div class="donut-percent">33%</div><div class="donut-label">женщины</div></div></div></div><div class="stats-row"><div class="stat-item"><div class="stat-value">2</div><div class="stat-desc">женщины в ректорате</div></div><div class="stat-item"><div class="stat-value">6</div><div class="stat-desc">всего в ректорате</div></div></div></div>
-                <div class="dashboard-card"><h4>БГУ</h4><div class="circular-chart"><div class="donut"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="42" fill="none" stroke="#ede7f8" stroke-width="12"/><circle cx="50" cy="50" r="42" fill="none" stroke="#9b7bcb" stroke-width="12" stroke-dasharray="264" stroke-dashoffset="165" stroke-linecap="round"/></svg><div class="donut-text"><div class="donut-percent">37.5%</div><div class="donut-label">женщины</div></div></div></div><div class="stats-row"><div class="stat-item"><div class="stat-value">3</div><div class="stat-desc">женщины в ректорате</div></div><div class="stat-item"><div class="stat-value">8</div><div class="stat-desc">всего в ректорате</div></div></div></div>
-                <div class="dashboard-card"><h4>БНТУ</h4><div class="circular-chart"><div class="donut"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="42" fill="none" stroke="#ede7f8" stroke-width="12"/><circle cx="50" cy="50" r="42" fill="none" stroke="#9b7bcb" stroke-width="12" stroke-dasharray="264" stroke-dashoffset="231" stroke-linecap="round"/></svg><div class="donut-text"><div class="donut-percent">12.5%</div><div class="donut-label">женщины</div></div></div></div><div class="stats-row"><div class="stat-item"><div class="stat-value">1</div><div class="stat-desc">женщина в ректорате</div></div><div class="stat-item"><div class="stat-value">8</div><div class="stat-desc">всего в ректорате</div></div></div></div>
+                <div class="dashboard-card"><h4>БГЭУ </h4><div class="circular-chart"><div class="donut"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="42" fill="none" stroke="#ede7f8" stroke-width="12"/><circle cx="50" cy="50" r="42" fill="none" stroke="#9b7bcb" stroke-width="12" stroke-dasharray="264" stroke-dashoffset="176" stroke-linecap="round"/></svg><div class="donut-text"><div class="donut-percent">33%</div><div class="donut-label">женщины</div></div></div></div><div class="stats-row"><div class="stat-item"><div class="stat-value">2</div><div class="stat-desc">женщины в ректорате</div></div><div class="stat-item"><div class="stat-value">6</div><div class="stat-desc">всего в ректорате</div></div></div></div>
+                <div class="dashboard-card"><h4>БГУ </h4><div class="circular-chart"><div class="donut"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="42" fill="none" stroke="#ede7f8" stroke-width="12"/><circle cx="50" cy="50" r="42" fill="none" stroke="#9b7bcb" stroke-width="12" stroke-dasharray="264" stroke-dashoffset="165" stroke-linecap="round"/></svg><div class="donut-text"><div class="donut-percent">37.5%</div><div class="donut-label">женщины</div></div></div></div><div class="stats-row"><div class="stat-item"><div class="stat-value">3</div><div class="stat-desc">женщины в ректорате</div></div><div class="stat-item"><div class="stat-value">8</div><div class="stat-desc">всего в ректорате</div></div></div></div>
+                <div class="dashboard-card"><h4>БНТУ </h4><div class="circular-chart"><div class="donut"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="42" fill="none" stroke="#ede7f8" stroke-width="12"/><circle cx="50" cy="50" r="42" fill="none" stroke="#9b7bcb" stroke-width="12" stroke-dasharray="264" stroke-dashoffset="231" stroke-linecap="round"/></svg><div class="donut-text"><div class="donut-percent">12.5%</div><div class="donut-label">женщины</div></div></div></div><div class="stats-row"><div class="stat-item"><div class="stat-value">1</div><div class="stat-desc">женщина в ректорате</div></div><div class="stat-item"><div class="stat-value">8</div><div class="stat-desc">всего в ректорате</div></div></div></div>
             </div>
             
-            <h3 class="subheading">БГЭУ (Белорусский государственный экономический университет)</h3>
-            <div class="info-cards"><div class="info-card"><div class="percent">8</div><div class="label">женщины-деканы</div><div class="detail">из 10 факультетов</div></div><div class="info-card"><div class="percent">80%</div><div class="label">деканов-женщин</div><div class="detail">в БГЭУ</div></div><div class="info-card"><div class="percent">33%</div><div class="label">ректорат</div><div class="detail">2 из 6 проректоров — женщины</div></div></div>
-            <table class="modern-table"><tbody><tr><td><strong>ФМЛ</strong> — Разумова С.В.</td></tr><tr><td><strong>ФЭМ</strong> — Петриченко Е.В.</td></tr><tr><td><strong>УЭФ</strong> — Маталыцкая С.К.</td></tr><tr><td><strong>ФФБД</strong> — Лесневская Н.А.</td></tr><tr><td><strong>ФЦЭ</strong> — Майоровская С.В.</td></tr><tr><td><strong>СЭФ</strong> — Буева А.О.</td></tr><tr><td><strong>ФМБК</strong> — Малашенко Е.А.</td></tr><tr><td><strong>ФМЭО</strong> — Березовский О.Н.</td></tr></tbody></table>
+            <!-- Женщины-деканы -->
+            <h3 class="subheading"> Женщины-деканы вузов</h3>
+            <div class="dashboard-grid">
+                <div class="dashboard-card"><h4> БГЭУ</h4><div class="circular-chart"><div class="donut"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="42" fill="none" stroke="#ede7f8" stroke-width="12"/><circle cx="50" cy="50" r="42" fill="none" stroke="#9b7bcb" stroke-width="12" stroke-dasharray="264" stroke-dashoffset="52.8" stroke-linecap="round"/></svg><div class="donut-text"><div class="donut-percent">80%</div><div class="donut-label">женщины</div></div></div></div><div class="stats-row"><div class="stat-item"><div class="stat-value">8</div><div class="stat-desc">женщины-деканы</div></div><div class="stat-item"><div class="stat-value">10</div><div class="stat-desc">всего факультетов</div></div></div></div>
+                <div class="dashboard-card"><h4> БГУ</h4><div class="circular-chart"><div class="donut"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="42" fill="none" stroke="#ede7f8" stroke-width="12"/><circle cx="50" cy="50" r="42" fill="none" stroke="#9b7bcb" stroke-width="12" stroke-dasharray="264" stroke-dashoffset="198" stroke-linecap="round"/></svg><div class="donut-text"><div class="donut-percent">25%</div><div class="donut-label">женщины</div></div></div></div><div class="stats-row"><div class="stat-item"><div class="stat-value">4</div><div class="stat-desc">женщины-деканы</div></div><div class="stat-item"><div class="stat-value">16</div><div class="stat-desc">всего факультетов</div></div></div></div>
+                <div class="dashboard-card"><h4> БНТУ</h4><div class="circular-chart"><div class="donut"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="42" fill="none" stroke="#ede7f8" stroke-width="12"/><circle cx="50" cy="50" r="42" fill="none" stroke="#9b7bcb" stroke-width="12" stroke-dasharray="264" stroke-dashoffset="232.32" stroke-linecap="round"/></svg><div class="donut-text"><div class="donut-percent">11.8%</div><div class="donut-label">женщины</div></div></div></div><div class="stats-row"><div class="stat-item"><div class="stat-value">2</div><div class="stat-desc">женщины-деканы</div></div><div class="stat-item"><div class="stat-value">17</div><div class="stat-desc">всего факультетов</div></div></div></div>
+            </div>
             
-            <h3 class="subheading">БГУ (Белорусский государственный университет)</h3>
-            <div class="info-cards"><div class="info-card"><div class="percent">4</div><div class="label">женщины-деканы</div><div class="detail">из 16 факультетов</div></div><div class="info-card"><div class="percent">25%</div><div class="label">деканов-женщин</div><div class="detail">в БГУ</div></div><div class="info-card"><div class="percent">37.5%</div><div class="label">ректорат</div><div class="detail">3 из 8 проректоров — женщины</div></div></div>
-            <table class="modern-table"><tbody><tr><td><strong>ФМО</strong> — Достанко Е.А.</td></tr><tr><td><strong>ФСК</strong> — Прохоренко О.Г.</td></tr><tr><td><strong>Экономический</strong> — Королева А.А.</td></tr><tr><td><strong>Юридический</strong> — Ананич С.М.</td></tr></tbody></table>
+            <!-- Общие цифры  -->
+            <h3 class="subheading"> Общие цифры </h3>
+            <div class="dashboard-grid">
+                <div class="dashboard-card"><h4>БГЭУ </h4><div class="circular-chart"><div class="donut"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="42" fill="none" stroke="#ede7f8" stroke-width="12"/><circle cx="50" cy="50" r="42" fill="none" stroke="#9b7bcb" stroke-width="12" stroke-dasharray="264" stroke-dashoffset="99" stroke-linecap="round"/></svg><div class="donut-text"><div class="donut-percent">62.5%</div><div class="donut-label">женщины</div></div></div></div><div class="stats-row"><div class="stat-item"><div class="stat-value">10</div><div class="stat-desc">женщины (всего)</div></div><div class="stat-item"><div class="stat-value">16</div><div class="stat-desc">руков. позиции</div></div></div></div>
+                <div class="dashboard-card"><h4>БГУ </h4><div class="circular-chart"><div class="donut"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="42" fill="none" stroke="#ede7f8" stroke-width="12"/><circle cx="50" cy="50" r="42" fill="none" stroke="#9b7bcb" stroke-width="12" stroke-dasharray="264" stroke-dashoffset="187" stroke-linecap="round"/></svg><div class="donut-text"><div class="donut-percent">29.2%</div><div class="donut-label">женщины</div></div></div></div><div class="stats-row"><div class="stat-item"><div class="stat-value">7</div><div class="stat-desc">женщины (всего)</div></div><div class="stat-item"><div class="stat-value">24</div><div class="stat-desc">руков. позиции</div></div></div></div>
+                <div class="dashboard-card"><h4>БНТУ </h4><div class="circular-chart"><div class="donut"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="42" fill="none" stroke="#ede7f8" stroke-width="12"/><circle cx="50" cy="50" r="42" fill="none" stroke="#9b7bcb" stroke-width="12" stroke-dasharray="264" stroke-dashoffset="232.32" stroke-linecap="round"/></svg><div class="donut-text"><div class="donut-percent">12%</div><div class="donut-label">женщины</div></div></div></div><div class="stats-row"><div class="stat-item"><div class="stat-value">3</div><div class="stat-desc">женщины (всего)</div></div><div class="stat-item"><div class="stat-value">25</div><div class="stat-desc">руков. позиции</div></div></div></div>
+            </div>
             
-            <h3 class="subheading">БНТУ (Белорусский национальный технический университет)</h3>
-            <div class="info-cards"><div class="info-card"><div class="percent">2</div><div class="label">женщины-деканы</div><div class="detail">из 17 факультетов</div></div><div class="info-card"><div class="percent">11.8%</div><div class="label">деканов-женщин</div><div class="detail">в БНТУ</div></div><div class="info-card"><div class="percent">12.5%</div><div class="label">ректорат</div><div class="detail">1 из 8 проректоров — женщина</div></div></div>
-            <table class="modern-table"><tbody><tr><td><strong>ФИТР</strong> — Мазаник Ю.М.</td></tr><tr><td><strong>МСФ</strong> — Арабей А.В.</td></tr></tbody></table>
-            <div class="source-note">Данные основаны на официальной информации университетов (2025–2026)</div>
+           
+        <!-- Нижние кнопки навигации -->
+        <div class="footer-container">
+            <div class="main-buttons">
+                <button class="main-btn" data-tab="stats"> Статистика</button>
+                <button class="main-btn" data-tab="government"> Правительство</button>
+                <button class="main-btn" data-tab="science"> Информационные источники</button>
+            </div>
+        </div>
         </div>
     </div>
-
-    <!-- НАУКА -->
+  <!-- ИНФОРМАЦИОННЫЕ ИСТОЧНИКИ -->
     <div id="science" class="tab-section">
         <div class="container">
-            <h2 class="section-title">Основные площадки и источники по теме женщин в управлении и науке Беларуси</h2>
+            <h2 class="section-title">Основные информационные источники</h2>
             <div class="research-item"><h3>1. Журнал «Наука и инновации»</h3><p>Официальное издание НАН Беларуси.</p><div class="source"><a href="https://innosfera.by/archive" target="_blank" rel="noopener">innosfera.by/archive</a></div></div>
             <div class="research-item"><h3>2. Сборники БГУ</h3><p>Конференция «Роль женщины в развитии современной науки и образования».</p><div class="source"><a href="https://elib.bsu.by" target="_blank" rel="noopener">elib.bsu.by</a></div></div>
             <div class="research-item"><h3>3. Гендерная статистика Белстата</h3><p>Актуальные цифры по доле женщин в органах госуправления, судах и науке.</p><div class="source"><a href="https://gender.belstat.gov.by" target="_blank" rel="noopener">gender.belstat.gov.by</a></div></div>
             <div class="research-item"><h3>4. Альманах «Женщины в политике»</h3><p>Независимое издание о гендерных аспектах власти в регионе.</p><div class="source"><a href="https://women-in-politics.org" target="_blank" rel="noopener">women-in-politics.org</a></div></div>
             <div class="research-item"><h3>5. Институт социологии НАН Беларуси</h3><p>Исследования социального статуса женщин.</p><div class="source"><a href="https://socio.bas-net.by/publikatsii" target="_blank" rel="noopener">socio.bas-net.by/publikatsii</a></div></div>
         </div>
-    </div>
+        <div class="footer-container">
+            <div class="main-buttons">
+                <button class="main-btn" data-tab="stats">Статистика</button>
+                <button class="main-btn" data-tab="government">Правительство</button>
+                <button class="main-btn" data-tab="education">Образование</button>
+            </div>
+       </div> 
 </main>
-
-<footer>
-    <div class="container"><p></p></div>
-</footer>
 
 <script>
     (function() {
